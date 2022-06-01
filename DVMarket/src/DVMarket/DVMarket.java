@@ -132,6 +132,13 @@ public class DVMarket {
     public void agregarProductos(Producto p) {
         this.productos.add(p);
     }
+    
+    public boolean eliminarProductos(Producto p) {
+    	if(this.productos.contains(p)) {
+    		return this.productos.remove(p);
+    	}
+    	return false;
+    }
 
     private void nuevaCompra() {
         Compra compra = new Compra();
