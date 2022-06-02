@@ -16,7 +16,7 @@ public aspect AvisoBuscar {
     	ou.append( thisJoinPoint.getSignature().getDeclaringTypeName() + ",");
     	ou.append(Tiempo.fechaDeHoy() + ",");
     	ou.append(Tiempo.horaExacta() + ",");
-    	ou.append(thisJoinPoint.getSignature().getName());
+    	ou.append(thisJoinPoint.getSignature().getName() + "\n");
     	
         writeFile(ou.toString());
     }
@@ -29,13 +29,10 @@ public aspect AvisoBuscar {
                 file.createNewFile();
             }
 
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(content);
             bw.close();
-
-            System.out.println("Done");
-
         } catch (IOException e) {
             e.printStackTrace();
         }

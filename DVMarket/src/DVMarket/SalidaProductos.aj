@@ -8,7 +8,9 @@ import java.io.IOException;
 public aspect SalidaProductos {
 	File file = new File("market.log");
 
-    after(Item item) : target(item) && call(void DVMarket.borrarItem()){
+    before(Item item) : target(item) && call(* DVMarket.borrarItem(..)){
+        System.out.println("hollaaa");
+
     	StringBuilder ou = new StringBuilder();
     	
     	ou.append("borrarItem,");
@@ -17,6 +19,8 @@ public aspect SalidaProductos {
     	ou.append(Tiempo.horaExacta());
     	
         writeFile(ou.toString());
+        
+        System.out.println("hollaaa");
     }
     
 
